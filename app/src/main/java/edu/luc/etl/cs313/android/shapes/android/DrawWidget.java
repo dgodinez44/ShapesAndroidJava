@@ -24,7 +24,7 @@ public class DrawWidget extends View {
 
     @Override
     protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
-        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(100, 100);
     }
     
     // TODO once BoundingBox and Draw are implemented, change Fixtures.simpleCircle
@@ -40,5 +40,22 @@ public class DrawWidget extends View {
         b.accept(new Draw(canvas, paint));
         shape.accept(new Draw(canvas, paint));
         canvas.translate(b.getX(), b.getY());
+
+        canvas.drawColor(Color.WHITE);
+
+        canvas.drawLine(33, 0, 33, 100, paint);
+
+        paint.setColor(Color.RED);
+        paint.setStrokeWidth(10);
+        canvas.drawLine(56, 0, 56, 100, paint);
+
+        paint.setColor(Color.GREEN);
+        paint.setStrokeWidth(5);
+
+        for(int y = 30, alpha = 255; alpha > 2; alpha >>= 1, y += 10){
+            paint.setAlpha(alpha);
+            canvas.drawLine(0, y, 100, y, paint);
+        }
+
     }
 }
