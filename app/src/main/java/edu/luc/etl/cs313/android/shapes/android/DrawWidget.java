@@ -42,21 +42,49 @@ public class DrawWidget extends View {
         shape.accept(new Draw(canvas, paint));
         canvas.translate(b.getX(), b.getY());
 
+        // Clear the canvas with a white background
         canvas.drawColor(Color.WHITE);
 
-        canvas.drawLine(33, 0, 33, 100, paint);
 
+        // Set up the paint object
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(2);
+
+        // Draw the rectangle (left side)
+        paint.setColor(Color.BLACK);
+        canvas.drawRect(10, 10, 40, 90, paint);
+
+        // Draw the red rectangle (right side)
         paint.setColor(Color.RED);
-        paint.setStrokeWidth(10);
-        canvas.drawLine(56, 0, 56, 100, paint);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawRect(50, 10, 70, 30, paint);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawRect(50, 10, 90, 50, paint);
 
-        paint.setColor(Color.GREEN);
-        paint.setStrokeWidth(5);
+        // Draw the blue polygon (trapezoid)
+        paint.setColor(Color.BLUE);
+        float[] trapezoidPts = {
+                55, 35,  // First point
+                65, 45,  // Second point
+                80, 45,  // Third point
+                85, 35,  // Fourth point
+                55, 35   // Back to first point
+        };
+        canvas.drawLines(trapezoidPts, paint);
 
-        for(int y = 30, alpha = 255; alpha > 2; alpha >>= 1, y += 10){
-            paint.setAlpha(alpha);
-            canvas.drawLine(0, y, 100, y, paint);
-        }
+        // Draw the purple circle
+        paint.setColor(Color.MAGENTA);
+        canvas.drawCircle(70, 75, 15, paint);
+
+        // Draw the partial octagon (top left)
+        paint.setColor(Color.BLACK);
+        float[] octagonPts = {
+                10, 10,  // First point
+                20, 5,   // Second point
+                30, 10,  // Third point
+                10, 10   // Back to first point
+        };
+        canvas.drawLines(octagonPts, paint);
 
     }
 }
