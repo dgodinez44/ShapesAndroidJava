@@ -1,5 +1,6 @@
 package edu.luc.etl.cs313.android.shapes.android;
 
+import android.graphics.Color;
 import edu.luc.etl.cs313.android.shapes.model.*;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -34,7 +35,7 @@ public class DrawWidget extends View {
     @Override
     @SuppressLint("DrawAllocation")
     protected void onDraw(final Canvas canvas) {
-        final var shape = Fixtures.simpleCircle;
+        final var shape = Fixtures.complexGroup;
         final var b = shape.accept(new BoundingBox());
         canvas.translate(-b.getX(), -b.getY());
         b.accept(new Draw(canvas, paint));
