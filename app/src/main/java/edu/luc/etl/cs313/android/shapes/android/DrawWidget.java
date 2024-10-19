@@ -45,7 +45,6 @@ public class DrawWidget extends View {
         // Clear the canvas with a white background
         canvas.drawColor(Color.WHITE);
 
-
         // Set up the paint object
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2);
@@ -64,10 +63,10 @@ public class DrawWidget extends View {
         // Draw the blue polygon (trapezoid)
         paint.setColor(Color.BLUE);
         Polygon trapezoid = new Polygon(
-                new Point(55, 35),
-                new Point(65, 45),
-                new Point(80, 45),
-                new Point(85, 35)
+                new Point(55, 35), // Top-left
+                new Point(65, 45), // Bottom-left
+                new Point(80, 45), // Bottom-right
+                new Point(85, 35)  // Top-right
         );
 
         float[] trapezoidPts = new float[trapezoid.getPoints().size() * 4];
@@ -89,17 +88,14 @@ public class DrawWidget extends View {
         // Draw the partial octagon (top left)
         paint.setColor(Color.BLACK);
         Polygon octagon = new Polygon(
-                //new Point(10, 10),
-                //new Point(20, 5),
-                //new Point(30, 10)
-                new Point(10, 15),  // Top
-                new Point(15, 10),  // Top-right
-                new Point(25, 10),  // Right
-                new Point(30, 15),  // Bottom-right
-                new Point(30, 25),  // Bottom
-                new Point(25, 30),  // Bottom-left
-                new Point(15, 30),  // Left
-                new Point(10, 25)   // Top-left
+                new Point(5, 10),   // Top
+                new Point(10, 5),   // Top-right
+                new Point(20, 5),   // Right
+                new Point(25, 10),  // Bottom-right
+                new Point(25, 20),  // Bottom
+                new Point(20, 25),  // Bottom-left
+                new Point(10, 25),  // Left
+                new Point(5, 20)    // Top-left
         );
         float[] octagonPts = new float[octagon.getPoints().size() * 4];
         i = 0;
